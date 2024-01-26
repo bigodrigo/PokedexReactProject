@@ -57,13 +57,15 @@ export default function PokeList() {
             {pokemonList.map((pokemon) => (
                 <PokeCard key={pokemon.id} pokemon={pokemon} />
             ))}
-            <button onClick={fetchMorePokemon}>Fetch 10 More Pokémon</button>
+            <StyledFetchButton onClick={fetchMorePokemon}>Fetch 10 More Pokémon</StyledFetchButton>
         </Wrapper>
     );
 }
 
 const Wrapper = styled.ul`
-    padding: 25px 300px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 25px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -84,4 +86,38 @@ const Wrapper = styled.ul`
         border-radius: 10px;
         border: 3px solid #ffffff;
     }
+`;
+
+const StyledFetchButton = styled.button`
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+
+    &:hover {
+        border-color: #646cff;
+    }
+    &:focus,
+    &:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+    }
+    
+    @media (prefers-color-scheme: light) {
+        :root {
+        color: #213547;
+        background-color: #ffffff;
+        }
+        a:hover {
+        color: #747bff;
+        }
+        & {
+        background-color: #f9f9f9;
+        }
+    }
+    
 `;
