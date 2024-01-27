@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+
 function PokeCard({ pokemon }) {
     const { name, id, gif, types, description } = pokemon;
+
 
     PokeCard.propTypes = {
         pokemon: PropTypes.shape({
@@ -34,7 +36,7 @@ function PokeCard({ pokemon }) {
 }
 
 const Card = styled.li`
-    background-color: #d8e3ec;
+    background-color: ${props => props.theme.cardBG};
     width: 200px;
     padding: 15px;
     display: flex;
@@ -48,10 +50,6 @@ const Card = styled.li`
         background-color: #96d9d6;
         transform: scale(1.1);
         cursor: pointer;
-    }
-
-    &.modo-escuro {
-        background-color: #a8a8a8;
     }
 `;
 

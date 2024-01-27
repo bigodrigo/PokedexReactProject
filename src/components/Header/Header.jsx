@@ -1,15 +1,12 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { ThemeContext } from 'styled-components'
 import styled from 'styled-components';
 
-function HeaderComponent() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    const toggleTheme = () => {
-        setIsDarkMode((prevMode) => !prevMode);
-    };
+function HeaderComponent({ toggleTheme }) { // Receive toggleTheme as a prop
+    const theme = useContext(ThemeContext);
 
     return (
-        <StyledHeader isDarkMode={isDarkMode}>
+        <StyledHeader>
             <nav>
                 <StyledLink href="./index.html">
                     <StyledLogo src="./pokeball2.png" alt="pokeball" />
@@ -21,10 +18,10 @@ function HeaderComponent() {
                     <StyledLogo src="./great.png" alt="pokeball" />
                 </StyledLink>
             </nav>
-            <StyledButton id="botao-alterar-tema" onClick={toggleTheme}>
+            <StyledButton id="botao-alterar-tema" onClick={toggleTheme}> {/* Use toggleTheme */}
                 <StyledImgButton
-                    src={isDarkMode ? "./moon.png" : "./sun.png"}
-                    alt={isDarkMode ? "lua" : "sol"}
+                    src={theme.light ? "./sun.png" : "./moon.png"}
+                    alt={theme.light ? "sol" : "lua"}
                     className="imagem-botao"
                 />
             </StyledButton>
@@ -42,7 +39,7 @@ const StyledHeader = styled.header`
     padding: 25px;
     position: sticky;
     top: 0;
-    background-color: ${({ isDarkMode }) => (isDarkMode ? '#333' : '#5e5b5b')};
+    background-color: #5e5b5bad;
     z-index: 999; /* Add a high z-index to ensure the header is displayed above the content */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for visual separation */
     border-radius: 0 0 15px 15px; /* Add rounded borders to the bottom of the header */
