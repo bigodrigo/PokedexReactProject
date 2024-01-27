@@ -1,8 +1,10 @@
 import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
-import PokeList from './components/PokeList/PokeList';
+import PokemonListPage from './components/PokemonListPage/PokemonListPage';
 import HeaderComponent from './components/Header/Header';
 import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PokemonDetailPage from './components/PokemonDetailPage/PokemonDetailPage';
 
 function App() {
   const themes = {
@@ -37,7 +39,12 @@ function MainContainer({ toggleTheme }) {
   return (
     <Body>
       <HeaderComponent toggleTheme={toggleTheme} /> {/* Pass the toggleTheme function */}
-      <PokeList />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" exact element={<PokemonListPage />} />
+            <Route path="/pokemon/:id" exact element={<PokemonDetailPage />} />
+          </Routes>
+        </BrowserRouter>
     </Body>
   );
 }

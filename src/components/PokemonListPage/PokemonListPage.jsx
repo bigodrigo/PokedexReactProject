@@ -1,9 +1,11 @@
+// PokemonListPage.jsx
 import { useState, useEffect } from 'react';
 import { getPokemonData, getPokemonSpeciesData, removeBarra } from '../../api/data';
 import  PokeCard  from '../PokeCard/PokeCard';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export default function PokeList() {
+export default function PokemonListPage() {
     const [pokemonList, setPokemonList] = useState([]);
 
     useEffect(() => {
@@ -54,8 +56,12 @@ export default function PokeList() {
 
     return (
         <Wrapper>
-            {pokemonList.map((pokemon) => (
-                <PokeCard key={pokemon.id} pokemon={pokemon} />
+            {pokemonList.map((pokemon, index) => (
+                <StyledLink key={index}>
+                    <StyledRouterLink to={`/pokemon/${index}`}>
+                        <PokeCard key={pokemon.id} pokemon={pokemon} />
+                    </StyledRouterLink>
+                </StyledLink>
             ))}
             <StyledFetchButton onClick={fetchMorePokemon}>Fetch 10 More Pokémon</StyledFetchButton>
         </Wrapper>
@@ -92,10 +98,10 @@ const StyledFetchButton = styled.button`
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: ${props => props.theme.cardBG};
+    color: ${props => props.theme.color};
+    font-weight: bold;
     cursor: pointer;
     transition: border-color 0.25s;
 
@@ -106,18 +112,20 @@ const StyledFetchButton = styled.button`
     &:focus-visible {
         outline: 4px auto -webkit-focus-ring-color;
     }
-    
-    @media (prefers-color-scheme: light) {
-        :root {
-        color: #213547;
-        background-color: #ffffff;
-        }
-        a:hover {
-        color: #747bff;
-        }
-        & {
-        background-color: #f9f9f9;
-        }
+`;
+
+const StyledLink = styled.div`
+    * {
+        text-decoration: none;
     }
-    
+`;
+
+const StyledRouterLink = styled(Link)`
+    /* Add your styles for the Link component here */
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        /* Add hover styles if needed */
+    }
 `;
