@@ -14,7 +14,7 @@ function HeaderComponent({ toggleTheme }) { // Receive toggleTheme as a prop
             </nav>
             <StyledButton id="botao-alterar-tema" onClick={toggleTheme}> {/* Use toggleTheme */}
                 <StyledImgButton
-                    src={theme.light ? "./sun.png" : "./moon.png"}
+                    src={theme.light ? "/sun.png" : "/moon.png"}
                     alt={theme.light ? "sol" : "lua"}
                     className="imagem-botao"
                 />
