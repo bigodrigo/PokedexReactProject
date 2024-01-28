@@ -10,6 +10,21 @@ export async function getPokemonSpeciesData(endpointNumber) {
     return pokemonSpeciesData;
 }
 
+export async function getPokemonAbilities(url) {
+    const response = await fetch(url);
+    const pokemonAbilities = await response.json();
+    return pokemonAbilities;
+}
+
+export function getEnglishFlavorText(flavorTextEntries) {
+    for (const entry of flavorTextEntries) {
+        if (entry.language.name === 'en') {
+            return entry.flavor_text;
+        }
+    }
+    return ''; // Return empty string if no English flavor text is found
+}
+
 export function removeBarra(value) {
     const stringValue = value.toString();
     const replacedValue = stringValue.replaceAll('\n', ' ').replaceAll('\f', ' ');

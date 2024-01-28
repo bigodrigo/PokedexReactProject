@@ -58,7 +58,7 @@ export default function PokemonListPage() {
         <Wrapper>
             {pokemonList.map((pokemon, index) => (
                 <StyledLink key={index}>
-                    <StyledRouterLink to={`/pokemon/${index}`}>
+                    <StyledRouterLink to={`/pokemon/${index + 1}`}>
                         <PokeCard key={pokemon.id} pokemon={pokemon} />
                     </StyledRouterLink>
                 </StyledLink>

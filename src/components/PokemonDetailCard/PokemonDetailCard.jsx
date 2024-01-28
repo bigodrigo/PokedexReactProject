@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 
 function PokemonDetailCard({ pokemon }) {
-    const { name, id, gif, types, description, abilities } = pokemon;
+    const { name, id, gif, types, description, abilities, moves } = pokemon;
 
-    console.log(abilities)
     PokemonDetailCard.propTypes = {
         pokemon: PropTypes.shape({
             name: PropTypes.string.isRequired,
@@ -13,31 +12,55 @@ function PokemonDetailCard({ pokemon }) {
             gif: PropTypes.string.isRequired,
             types: PropTypes.arrayOf(PropTypes.string).isRequired,
             description: PropTypes.string.isRequired,
-            abilities: PropTypes.string.isRequired,
+            abilities: PropTypes.arrayOf(
+                PropTypes.shape({
+                    name: PropTypes.string.isRequired,
+                    description: PropTypes.string.isRequired,
+                })
+            ).isRequired,
+            moves: PropTypes.arrayOf(PropTypes.string).isRequired,
         }).isRequired,
     };
 
     return (
         <Card>
-            <Infos className="informacoes">
-                <Title>{name}</Title>
-                <Title>#{id.toString().padStart(3, '0')}</Title>
-            </Infos>
-            <Gif src={gif} alt={name} />
-            <Types>
-                {types.map((type, index) => (
-                    <Type key={index} className={`tipo ${type}`}>
-                        {type}
-                    </Type>
+            <StyledWrapper>
+                <div>
+                    <Gif src={gif} alt={name} />
+                    <Infos>
+                        <Title>{name}</Title>
+                        <Title>#{id.toString().padStart(3, '0')}</Title>
+                    </Infos>
+                </div>
+                <div>
+                    <Types>
+                        {types.map((type, index) => (
+                            <Type key={index} className={`tipo ${type}`}>
+                                {type}
+                            </Type>
+                        ))}
+                    </Types>
+                    <Description>{description}</Description>
+                </div>
+            </StyledWrapper>
+            <AbilitiesWrapper>
+                <SectionTitle>Abilities</SectionTitle>
+                {abilities.map((ability, index) => (
+                    <div key={index}>
+                        <AbilityName>{ability.name}</AbilityName>
+                        <AbilityDescription>{ability.description}</AbilityDescription>
+                    </div>
                 ))}
-            </Types>
-            <Description>{description}</Description>
-            {/* <h3>{abilities}</h3> */}
+            </AbilitiesWrapper>
+            <MovesWrapper>
+                <SectionTitle>Moves</SectionTitle>
+                <MoveParagraph>{moves.join(', ')}</MoveParagraph>
+            </MovesWrapper>
         </Card>
     );
 }
 
-const Card = styled.li`
+const Card = styled.div`
     background-color: ${props => props.theme.cardBG};
     width: 600px;
     padding: 15px;
@@ -47,40 +70,42 @@ const Card = styled.li`
     gap: 15px;
     border-radius: 15px;
     transition: 0.2s ease-in-out;
+`;
 
-    &:hover {
-        background-color: #96d9d6;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
+const StyledWrapper = styled.div`
+    display: flex;
+    gap: 20px;
+    align-items: center;
 `;
 
 const Infos = styled.div`
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    justify-content: center;
     border: 1px solid #333333;
     border-radius: 10px;
 `;
 
 const Title = styled.span`
-    padding: 5px;
     text-transform: uppercase;
     font-size: 17px;
+    font-weight: bold;
 `;
 
 const Gif = styled.img`
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
 `;
 
 const Types = styled.ul`
     display: flex;
-    gap: 15px;
+    gap: 10px;
     list-style: none;
+    justify-content: center
 `;
 
 const Type = styled.li`
-    padding: 8px;
+    padding: 5px 10px;
     border-radius: 10px;
     text-transform: capitalize;
 
@@ -158,10 +183,37 @@ const Type = styled.li`
 `
 
 const Description = styled.p`
-    max-height: 80px;
-    overflow-y: scroll;
     font-size: 14px;
-    padding-right: 10px;
+    margin-top: 20px;
+`;
+
+const AbilitiesWrapper = styled.div`
+    margin-top: 20px;
+`;
+
+const AbilityName = styled.h4`
+    margin-top: 10px;
+    text-transform: uppercase;
+`;
+
+const AbilityDescription = styled.p`
+    margin-bottom: 20px;
+`;
+
+const MovesWrapper = styled.div`
+    margin-top: 20px;
+`;
+
+const MoveParagraph = styled.p`
+    margin-bottom: 10px;
+    padding: 10px;
+    text-transform: uppercase;
+`;
+
+const SectionTitle = styled.h2`
+    text-align: center;
+    border: 1px solid #333333;
+    border-radius: 10px;
 `;
 
 export default PokemonDetailCard

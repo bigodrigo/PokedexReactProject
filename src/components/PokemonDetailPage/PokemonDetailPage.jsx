@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getPokemonData, getPokemonSpeciesData, removeBarra } from '../../api/data';
+import { getPokemonData, getPokemonSpeciesData, removeBarra, getPokemonAbilities, getEnglishFlavorText } from '../../api/data';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import PokemonDetailCard from '../PokemonDetailCard/PokemonDetailCard';
@@ -15,13 +15,23 @@ function PokemonDetailPage() {
             const pokemonData = await getPokemonData(id);
             const pokemonSpeciesData = await getPokemonSpeciesData(id);
 
+            const moves = pokemonData.moves.map((element)=>element.move.name)
+
+            const abilityUrls = pokemonData.abilities.map(ability => ability.ability.url);
+            const abilityDescriptions = await Promise.all(abilityUrls.map(url => getPokemonAbilities(url)));
+            const abilities = pokemonData.abilities.map((ability, index) => ({
+                name: ability.ability.name,
+                description: getEnglishFlavorText(abilityDescriptions[index].flavor_text_entries),
+            }));
+
             const formattedData = {
                 name: pokemonData.name,
-                id: id,
+                id: parseInt(id),
                 gif: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`,
                 types: pokemonData.types.map((type) => type.type.name),
                 description: removeBarra(pokemonSpeciesData.flavor_text_entries.find((entry) => entry.language.name === 'en').flavor_text),
-                abilities: pokemonData.abilities
+                abilities: abilities,
+                moves: moves
             };
             data.push(formattedData);
             setPokemon(data);

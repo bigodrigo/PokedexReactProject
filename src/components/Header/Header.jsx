@@ -8,14 +8,8 @@ function HeaderComponent({ toggleTheme }) { // Receive toggleTheme as a prop
     return (
         <StyledHeader>
             <nav>
-                <StyledLink href="./index.html">
+                <StyledLink href="/">
                     <StyledLogo src="./pokeball2.png" alt="pokeball" />
-                </StyledLink>
-                <StyledLink href="./src/pages/kanto.html">
-                    <StyledLogo src="./premier.png" alt="pokeball" />
-                </StyledLink>
-                <StyledLink href="./src/pages/jhoto.html">
-                    <StyledLogo src="./great.png" alt="pokeball" />
                 </StyledLink>
             </nav>
             <StyledButton id="botao-alterar-tema" onClick={toggleTheme}> {/* Use toggleTheme */}

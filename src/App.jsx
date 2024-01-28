@@ -30,26 +30,18 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <MainContainer toggleTheme={toggleTheme} /> {/* Pass the toggleTheme function */}
-    </ThemeProvider>
-  );
-}
-
-function MainContainer({ toggleTheme }) {
-  return (
-    <Body>
-      <HeaderComponent toggleTheme={toggleTheme} /> {/* Pass the toggleTheme function */}
+      <Body>
+        <HeaderComponent toggleTheme={toggleTheme} />
         <BrowserRouter>
           <Routes>
             <Route path="/" exact element={<PokemonListPage />} />
             <Route path="/pokemon/:id" exact element={<PokemonDetailPage />} />
           </Routes>
         </BrowserRouter>
-    </Body>
+      </Body>
+    </ThemeProvider>
   );
 }
-
-export default App;
 
 const Body = styled.div`
   font-family: 'Poppins', sans-serif;
@@ -58,3 +50,5 @@ const Body = styled.div`
   color: ${props => props.theme.color};
   font-weight: bold;
 `;
+
+export default App;
