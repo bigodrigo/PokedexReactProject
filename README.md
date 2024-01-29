@@ -11,7 +11,7 @@
 - [My process](#my-process)
   - [Technologies](#-technologies)
   - [What I learned](#what-i-learned)
-  - [Suggested Enhancements](#-suggested-enhancements)
+  - [Suggested Enhancements](#muscle-suggested-enhancements)
 - [Author](#author)
 
 ## Overview
