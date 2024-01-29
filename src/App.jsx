@@ -12,13 +12,16 @@ function App() {
       light: true,
       color: '#333333',
       backgroundColor: '#5e5b5bad',
-      cardBG: '#d8e3ec'
+      cardBG: '#e0e4cc',
+      titleBG: '#F38630'
+
     },
     dark: {
       light: false,
       color: '#f5f5f5',
       backgroundColor: '#212121',
-      cardBG: '#a8a8a8'
+      cardBG: '#a8a8a8',
+      titleBG: '#FA6900'
     }
   }
 

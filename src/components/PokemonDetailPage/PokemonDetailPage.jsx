@@ -75,7 +75,7 @@ const Wrapper = styled.div`
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: #582965;
+        background-color: #69D2E7;
         border-radius: 10px;
         border: 3px solid #ffffff;
     }

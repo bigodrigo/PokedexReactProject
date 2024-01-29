@@ -24,25 +24,27 @@ function PokemonDetailCard({ pokemon }) {
 
     return (
         <Card>
-            <StyledWrapper>
-                <div>
-                    <Gif src={gif} alt={name} />
-                    <Infos>
-                        <Title>{name}</Title>
-                        <Title>#{id.toString().padStart(3, '0')}</Title>
-                    </Infos>
-                </div>
-                <div>
-                    <Types>
-                        {types.map((type, index) => (
-                            <Type key={index} className={`tipo ${type}`}>
-                                {type}
-                            </Type>
-                        ))}
-                    </Types>
-                    <Description>{description}</Description>
-                </div>
-            </StyledWrapper>
+            <Infos>
+                <SectionTitle>
+                    <Title>{name}</Title>
+                    <Title>#{id.toString().padStart(3, '0')}</Title>
+                </SectionTitle>
+                <StyledWrapper>
+                    <StyledFirstView>
+                        <Gif src={gif} alt={name} />
+                    </StyledFirstView>
+                    <div>
+                        <Description>{description}</Description>
+                        <Types>
+                            {types.map((type, index) => (
+                                <Type key={index} className={`tipo ${type}`}>
+                                    {type}
+                                </Type>
+                            ))}
+                        </Types>
+                    </div>
+                </StyledWrapper>
+            </Infos>
             <AbilitiesWrapper>
                 <SectionTitle>Abilities</SectionTitle>
                 {abilities.map((ability, index) => (
@@ -62,7 +64,7 @@ function PokemonDetailCard({ pokemon }) {
 
 const Card = styled.div`
     background-color: ${props => props.theme.cardBG};
-    width: 600px;
+    width: 800px;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -78,21 +80,24 @@ const StyledWrapper = styled.div`
     align-items: center;
 `;
 
-const Infos = styled.div`
+const StyledFirstView = styled.div`
+    width: 100%;
+    padding: 10px 20px;
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    border: 1px solid #333333;
-    border-radius: 10px;
+    flex-direction: column;
+`;
+
+const Infos = styled.div`
+    width: 100%;
+    padding: 10px 20px;
 `;
 
 const Title = styled.span`
     text-transform: uppercase;
-    font-size: 17px;
-    font-weight: bold;
 `;
 
 const Gif = styled.img`
+    margin: 0 auto;
     width: 200px;
     height: 200px;
 `;
@@ -184,36 +189,42 @@ const Type = styled.li`
 
 const Description = styled.p`
     font-size: 14px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 `;
 
 const AbilitiesWrapper = styled.div`
-    margin-top: 20px;
+    width: 100%;
+    padding: 10px 20px;
 `;
 
 const AbilityName = styled.h4`
-    margin-top: 10px;
+    margin: 10px 20px 0;
     text-transform: uppercase;
 `;
 
 const AbilityDescription = styled.p`
-    margin-bottom: 20px;
+    margin: 10px 20px 0;
 `;
 
 const MovesWrapper = styled.div`
-    margin-top: 20px;
+    width: 100%;
+    padding: 10px 20px;
 `;
 
 const MoveParagraph = styled.p`
-    margin-bottom: 10px;
-    padding: 10px;
+    margin: 10px 20px;
     text-transform: uppercase;
+    max-height: 160px;
+    overflow-y: scroll;
+    font-size: 14px;
+    padding-right: 10px;
 `;
 
 const SectionTitle = styled.h2`
     text-align: center;
     border: 1px solid #333333;
     border-radius: 10px;
+    background-color: ${props => props.theme.titleBG};
 `;
 
 export default PokemonDetailCard

@@ -1,15 +1,20 @@
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components'
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 function HeaderComponent({ toggleTheme }) { // Receive toggleTheme as a prop
     const theme = useContext(ThemeContext);
+
+    HeaderComponent.propTypes = {
+        toggleTheme: PropTypes.func.isRequired,
+    };
 
     return (
         <StyledHeader>
             <nav>
                 <StyledLink href="/">
-                    <StyledLogo src="./pokeball2.png" alt="pokeball" />
+                    <StyledLogo src="/pokeball2.png" alt="pokeball" />
                 </StyledLink>
             </nav>
             <StyledButton id="botao-alterar-tema" onClick={toggleTheme}> {/* Use toggleTheme */}
