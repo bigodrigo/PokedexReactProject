@@ -1,6 +1,6 @@
 # Pokédex React Version
 ## (Last Update) - 29/01/2024
-### This project is a milestone of a FullStack developer course, the final challenge for Frontend, serving to reinforce foundational principles and then upload it to a GitHub repository.
+### This project is a significant milestone of a FullStack developer course, serving as the final challenge for Frontend development. Its purpose is to reinforce foundational principles and then upload the completed project to a GitHub repository.
 
 ## Table of contents
 
@@ -18,16 +18,16 @@
 
 ### The challenge
 
-- [x] Create a Home page with 10 pokemon and the possibility of fetching more with a button.
-- [x] A second page with more information for each pokemon, showing their abilities and possible moves.
-- [x] Single Page Application (SPA);
-- [x] Context API acting as Theme Toggler;
-- [x] Styled-components;
-- [x] React-router-dom;
+- [x] Develop a Home page featuring 10 pokemon and the functionality to fetch more through a button.
+- [x] Create a second page that provides more detailed information about each pokemon, including their abilities and possible moves.
+- [x] Build a Single Page Application (SPA).
+- [x] Utilize Context API as a Theme Toggler.
+- [x] Implement Styled-components for styling.
+- [x] Utilize React-router-dom for routing.
 
 :thought_balloon: Note worthy observation:
 
-- This project is very similar to the first contact I had with DevEmDobro, I believe this was the ideia, to create a site using everything we have learned and make a better version from the first atempt, that is why I have chosen to make a layout as close as possible to the first one, keeping the experience as close as possible and highlighting the key differences from HTML/CSS/JS to React.
+- This project closely resembles the initial experience I had with DevEmDobro. The intention was to create a website using all the skills we have acquired and enhance it compared to the first attempt. Therefore, I have chosen to design the layout as similar as possible to the original version, aiming to preserve the user experience while highlighting the key differences when transitioning from HTML/CSS/JS to React.
 
 
 ### 🔖 Layout
@@ -59,11 +59,11 @@
 
 ### What I learned
 
-- Working with Styled-Components was a harder task then I had anticipated, I'm more used to work with tailwind, sass or plain css, so some of the ideias I had needed some work-arounds;
-- I had worked with Context before, but when linking it with the Styled-Components and a Theme I needed to rethink the structure I had already done and that was an interesting removal of my confort-zone;
-- The React Router was also something interesting, not much of a challenge but the routes are still something new to me;
-- One of the hardest parts was that there was 3 different fetches to be done and adding all of that into one Object, specially the abilities that don't have their description on every pokemon and needed another url.
-- Some text manipulation was also needed, first we had special characters like "\n" that needed to be removed, but also the abilities object comes with different languages, to keep the info in english I had to search for one prop(language: "en") and return the correct text.
+- Working with Styled-Components proved to be more challenging than I had initially anticipated. I am more familiar with Tailwind, Sass, or plain css, so some of my ideas required some workarounds.
+- While I had prior experience with Context, integrating it with Styled-Components and a Theme required me to reevaluate and restructure my existing code, which was a valuable exercise in stepping out of my comfort zone.
+- React Router was also an interesting addition. While not particularly challenging, working with routes was a new concept for me.
+- One of the more difficult aspects was handling three different fetches and consolidating all the data into a single object. This was especially true for the abilities, as not all pokemon have a description for each ability, necessitating an additional URL.
+- Text manipulation was also necessary. For instance, certain special characters like "\n" needed to be removed. Additionally, the abilities object contained varying languages, so I had to search for the appropriate prop (language: "en") in order to display the information in English.
 
 ```js
 // Using localStorage to keep the theme on a second visit or from detail page to home
@@ -112,11 +112,11 @@
 
 ### :muscle: Suggested Enhancements:
 
-- [ ] Add a skeleton Animation for the Fetch;
-- [ ] Keep the information on the context or localStorage;
-- [ ] Create an extra page or section for every region;
-- [ ] Refactoring some of the styles for the types colors and scrollbar;
-- [ ] Working with Classes, Objects.
+- [ ] Implement a skeleton animation for fetching data.
+- [ ] Preserve the information on the context or localStorage.
+- [ ] Develop an additional page or section dedicated to each region.
+- [ ] Improve the styling by refactoring the type colors and scrollbar.
+- [ ] Utilize classes and objects to enhance functionality.
 
 ## Author
 
