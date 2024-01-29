@@ -96,10 +96,9 @@ const Wrapper = styled.ul`
 
 const StyledFetchButton = styled.button`
     border-radius: 8px;
-    border: 1px solid transparent;
+    border: 1px solid ${props => props.theme.color};
     padding: 0.6em 1.2em;
-    font-family: inherit;
-    background-color: ${props => props.theme.cardBG};
+    background-color: ${props => props.theme.titleBG};
     color: ${props => props.theme.color};
     font-weight: bold;
     cursor: pointer;
@@ -121,11 +120,6 @@ const StyledLink = styled.div`
 `;
 
 const StyledRouterLink = styled(Link)`
-    /* Add your styles for the Link component here */
     text-decoration: none;
     color: inherit;
-
-    &:hover {
-        /* Add hover styles if needed */
-    }
 `;

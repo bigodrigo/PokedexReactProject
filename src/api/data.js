@@ -22,7 +22,7 @@ export function getEnglishFlavorText(flavorTextEntries) {
             return entry.flavor_text;
         }
     }
-    return ''; // Return empty string if no English flavor text is found
+    return '';
 }
 
 export function removeBarra(value) {

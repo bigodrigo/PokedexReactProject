@@ -2,7 +2,7 @@ import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
 import PokemonListPage from './components/PokemonListPage/PokemonListPage';
 import HeaderComponent from './components/Header/Header';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PokemonDetailPage from './components/PokemonDetailPage/PokemonDetailPage';
 
@@ -25,11 +25,18 @@ function App() {
     }
   }
 
-  const [theme, setTheme] = useState(themes.light); // Initial theme state
+  const storedTheme = localStorage.getItem('theme');
+  const initialTheme = storedTheme ? JSON.parse(storedTheme) : themes.light;
+
+  const [theme, setTheme] = useState(initialTheme);
 
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme.light ? themes.dark : themes.light));
   };
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }, [theme]);
 
   return (
     <ThemeProvider theme={theme}>
