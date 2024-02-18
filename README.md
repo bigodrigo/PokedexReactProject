@@ -1,5 +1,5 @@
 # Pokédex React Version
-## (Last Update) - 29/01/2024
+## (Last Update) - 18/02/2024
 ### This project is a significant milestone of a FullStack developer course, serving as the final challenge for Frontend development. Its purpose is to reinforce foundational principles and then upload the completed project to a GitHub repository.
 
 ## Table of contents
