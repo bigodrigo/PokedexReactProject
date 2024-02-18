@@ -42,7 +42,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Body>
         <HeaderComponent toggleTheme={toggleTheme} />
-        <BrowserRouter>
+        <BrowserRouter basename="/PokedexReactProject">
           <Routes>
             <Route path="/" exact element={<PokemonListPage />} />
             <Route path="/pokemon/:id" exact element={<PokemonDetailPage />} />

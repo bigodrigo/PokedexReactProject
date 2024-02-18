@@ -10,16 +10,21 @@ function HeaderComponent({ toggleTheme }) { // Receive toggleTheme as a prop
         toggleTheme: PropTypes.func.isRequired,
     };
 
+        // Gambi for working!
+        const baseUrl = '.';
+
     return (
         <StyledHeader>
             <nav>
                 <StyledLink href="/">
-                    <StyledLogo src="/pokeball2.png" alt="pokeball" />
+                    {/* Use baseUrl to make the image source relative */}
+                    <StyledLogo src={`${baseUrl}/pokeball2.png`} alt="pokeball" />
                 </StyledLink>
             </nav>
-            <StyledButton id="botao-alterar-tema" onClick={toggleTheme}> {/* Use toggleTheme */}
+            <StyledButton id="botao-alterar-tema" onClick={toggleTheme}>
+                {/* Use baseUrl to make the image source relative */}
                 <StyledImgButton
-                    src={theme.light ? "/sun.png" : "/moon.png"}
+                    src={theme.light ? `${baseUrl}/sun.png` : `${baseUrl}/moon.png`}
                     alt={theme.light ? "sol" : "lua"}
                     className="imagem-botao"
                 />
