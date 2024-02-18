@@ -10,22 +10,22 @@ function HeaderComponent({ toggleTheme }) { // Receive toggleTheme as a prop
         toggleTheme: PropTypes.func.isRequired,
     };
 
-        // Gambi for working!
-        const baseUrl = '.';
+    // const baseUrl = 'http://localhost:5173/PokedexReactProject/' //dev
+    const baseUrl = 'https://bigodrigo.github.io/PokedexReactProject/' //prod
 
     return (
         <StyledHeader>
             <nav>
-                <StyledLink href="/">
-                    {/* Use baseUrl to make the image source relative */}
-                    <StyledLogo src={`${baseUrl}/pokeball2.png`} alt="pokeball" />
+                <StyledLink href={baseUrl}>
+                    {/* Use baseUrl to make the href relative */}
+                    <StyledLogo src={`${baseUrl}pokeball2.png`} alt="pokeball" />
                 </StyledLink>
             </nav>
             <StyledButton id="botao-alterar-tema" onClick={toggleTheme}>
-                {/* Use baseUrl to make the image source relative */}
+                {/* Use baseUrl to make the src relative */}
                 <StyledImgButton
-                    src={theme.light ? `${baseUrl}/sun.png` : `${baseUrl}/moon.png`}
-                    alt={theme.light ? "sol" : "lua"}
+                    src={`${baseUrl}${theme.light ? 'sun.png' : 'moon.png'}`}
+                    alt={theme.light ? 'sol' : 'lua'}
                     className="imagem-botao"
                 />
             </StyledButton>
